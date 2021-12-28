@@ -17,6 +17,7 @@
         "league/flysystem-aws-s3-v3": "~1.0",
         "nyholm/psr7": "^1.4",
         "php-http/curl-client": "^2.2",
+        "silviolleite/laravelpwa": "^2.0",
         "toin0u/geocoder-laravel": "^4.4"
     },
     "require-dev": {
