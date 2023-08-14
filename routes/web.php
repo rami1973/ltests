@@ -5,7 +5,7 @@ use Alkoumi\LaravelHijriDate\Hijri;
 use LasePeCo\Geocoder\Facades\Geocoder;
 use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\FileController;
-
+use App\Http\Controllers\PdfController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,16 +16,20 @@ use App\Http\Controllers\FileController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('graphs',[ PdfController::class,'graphs']);
 
+Route::get('graphs-pdf', [PdfController::class,'graphPdf']);
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/test', function () {
     return view('test');
 });
+Route::get('file2/{fpath}/{filename}',[FileController::class, 'getFile2'] )->where('filename', '^[^/]+$');
 Route::get('file/{filename}',[FileController::class, 'getFile'] )->where('filename', '^[^/]+$');
 Route::get('image-upload', [ ImageUploadController::class, 'imageUpload' ])->name('image.upload');
 Route::post('image-upload', [ ImageUploadController::class, 'imageUploadPost' ])->name('image.upload.post');
+Route::post('fupload', [ ImageUploadController::class, 'fileUploadPost' ])->name('file.upload.post');
 Route::get('/geocode/{lat}/{lng}/{lang}', function ($lat,$lng,$lang) {
     $key=env('GOOGLE_MAPS_API_KEY');
     //dd($key);

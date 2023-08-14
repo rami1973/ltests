@@ -1,0 +1,50 @@
+////ltests
+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
+cd /var/www/ltests
+sudo git reset --hard origin/master
+sudo   git pull origin master
+cd public
+sudo nano .htaccess
+sudo sed -i '/RewriteEngine On/a    RewriteRule ^$ https://www.srgapps.xyz/ltests/home [R=301,L]' /var/www/ltests/public/.htaccess
+# redirect "/" to another domain, this will work:
+
+RewriteEngine on
+RewriteRule ^$ https://www.srgapps.xyz/ltests/home [R=301,L]
+cd ..
+sudo composer install
+sudo composer update
+sudo php artisan route:cache
+sudo php artisan route:list
+sudo php artisan view:cache
+sudo php artisan config:cache
+sudo php artisan storage:link --force
+sudo php artisan config:clear
+sudo php artisan cache:clear
+sudo composer dump-autoload
+sudo php artisan view:clear
+sudo php artisan route:clear
+sudo php artisan db:seed --class=LanguageLineSeeder
+yes
+sudo chown -R apache.apache /var/www/ltests
+sudo chmod -R 755 /var/www/ltests
+sudo chmod -R 755 /var/www/ltests/public
+sudo chmod -R 755 /var/www/ltests/storage
+sudo chmod -R 755 /var/www/ltests/storage/logs
+sudo chcon -R -t httpd_sys_rw_content_t /var/www/ltests/storage
+sudo chcon -R -t httpd_sys_rw_content_t /var/www/ltests/public
+
+sudo rm storage/logs/laravel.log
+sudo cat storage/logs/laravel.log
+// clear cache
+ composer update
+php artisan route:cache
+php artisan route:list
+php artisan view:cache
+php artisan config:cache
+php artisan storage:link
+
+php artisan config:clear
+php artisan cache:clear
+composer dump-autoload
+php artisan view:clear
+php artisan route:clear
