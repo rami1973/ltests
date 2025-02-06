@@ -81,7 +81,6 @@ class ImageUploadController extends Controller
         /* Store $imageName name in DATABASE from HERE */
         //$images=Storage::disk('oci')->allFiles('images');
        // $images=Storage::disk('oci')->files('images');
-       return response()->json(['success' => 'You have successfully upload image.',
-       'url' =>  $url]);
+      // return response()->json(['success' => 'You have successfully upload image.','url' =>  $url]);
     }
 }

@@ -23,8 +23,6 @@ sudo php artisan cache:clear
 sudo composer dump-autoload
 sudo php artisan view:clear
 sudo php artisan route:clear
-sudo php artisan db:seed --class=LanguageLineSeeder
-yes
 sudo chown -R apache.apache /var/www/ltests
 sudo chmod -R 755 /var/www/ltests
 sudo chmod -R 755 /var/www/ltests/public
